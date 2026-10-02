@@ -1,0 +1,1 @@
+Pasta reservada para imagens reais do produto. A versão atual usa tipografia e ícones SVG inline, sem imagens raster ou downloads pesados. Se adicionar imagens, use WebP, width/height explícitos, alt descritivo e loading="lazy" abaixo da primeira dobra. Não use lazy loading na imagem principal/LCP.
