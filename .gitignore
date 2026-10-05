@@ -1,0 +1,28 @@
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Dependências, caches e vínculo local da Vercel
+node_modules/
+.vercel/
+.cache/
+# Saídas geradas e relatórios locais
+/dist/
+/build/
+/coverage/
+/work/
+/tmp/
+/test-results/
+/playwright-report/
+*.zip
+*.log
+# Arquivos do sistema e editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+# Materiais de auditoria local
+MOBILE-QA.md
