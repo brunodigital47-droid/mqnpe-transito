@@ -23,31 +23,22 @@ if (UTM_KEYS.some(key => params.has(key))) {
 }
 try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(utms)); } catch (_) { /* Modo privado/restrições. */ }
 
-let checkoutUrl = null;
+// Link direto como fallback: falhas de tracking nunca bloqueiam a navegação.
+let checkoutUrl = CHECKOUT_URL;
 try {
   const candidate = new URL(CHECKOUT_URL);
-  if (candidate.protocol === 'https:') {
-    Object.entries(utms).forEach(([key, value]) => candidate.searchParams.set(key, value));
-    checkoutUrl = candidate.href;
-  }
-} catch (_) { /* Placeholder intencional: configurar antes de publicar. */ }
+  Object.entries(utms).forEach(([key, value]) => candidate.searchParams.set(key, value));
+  checkoutUrl = candidate.href;
+} catch (_) { /* Preserva o destino direto se a montagem das UTMs falhar. */ }
 
 document.querySelectorAll('.checkout-link').forEach(link => {
-  link.href = checkoutUrl || '#oferta';
-  link.addEventListener('click', event => {
-    if (!checkoutUrl) {
-      event.preventDefault();
-      const status = document.getElementById('checkout-status');
-      status.hidden = false;
-      status.textContent = 'As vendas ainda não estão disponíveis. O link de pagamento será disponibilizado em breve.';
-      document.getElementById('oferta').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-      status.tabIndex = -1;
-      status.focus({ preventScroll: true });
-      return;
-    }
-    if (typeof window.fbq === 'function') {
-      window.fbq('track', 'InitiateCheckout', { value: PRICE, currency: 'BRL', content_name: 'Multa Que Não Precisava Existir' });
-    }
+  link.href = checkoutUrl;
+  link.addEventListener('click', () => {
+    try {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'InitiateCheckout', { value: PRICE, currency: 'BRL', content_name: 'Multa Que Não Precisava Existir' });
+      }
+    } catch (_) { /* O navegador segue o href mesmo se o Pixel falhar. */ }
   });
 });
 // O CTA do hero mantém a rolagem para a oferta, conforme a copy solicitada.
