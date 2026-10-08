@@ -2,7 +2,7 @@
 // CONFIGURAÇÃO: altere apenas estes valores. Nunca coloque credenciais aqui.
 const PRICE = 49;
 const CHECKOUT_URL = 'https://ggcheckout.app/checkout/v5/dZjcEoFFynVmE5elIhAi'; // Exemplo: https://seu-checkout.com/produto
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
 const STORAGE_KEY = 'multa_utm';
 
 const priceLabel = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2, minimumFractionDigits: 0 }).format(PRICE);
