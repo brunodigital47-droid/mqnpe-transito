@@ -138,3 +138,11 @@ h1,h2{text-wrap:balance}.button{max-width:100%;text-align:center}.button:active{
 .learning .check-list svg{color:#37744b}
 .learning .topics-toggle{color:#37744b;border-color:#37744b}
 .learning .topics-toggle:hover{background:#102c3d08}
+
+/* Movimento discreto nos CTAs, sem alterar dimensões ou navegação. */
+@keyframes purchase-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:no-preference){
+  .button[href="#oferta"],.button.checkout-link{animation:purchase-nudge 3s ease-in-out infinite}
+  .button[href="#oferta"]:hover,.button.checkout-link:hover,.button[href="#oferta"]:focus-visible,.button.checkout-link:focus-visible{animation:none}
+}
+.button[href="#oferta"],.button.checkout-link{touch-action:manipulation}
