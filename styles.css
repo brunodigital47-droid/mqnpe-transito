@@ -128,3 +128,13 @@ h1,h2{text-wrap:balance}.button{max-width:100%;text-align:center}.button:active{
 @media(prefers-reduced-motion:reduce){.button{transition:none}}
 /* Play centralizado, sem bloquear os controles nativos. */
 .vsl-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:72px;height:72px;display:grid;place-items:center;border:2px solid white;border-radius:50%;background:var(--green);color:var(--navy);box-shadow:0 4px 20px #0005;cursor:pointer;padding:0}.vsl-play[hidden]{display:none}.vsl-play svg{width:32px;height:32px;fill:currentColor;stroke:none}.vsl-play:hover{background:#a1e762}.vsl-play:focus-visible{outline:3px solid white;outline-offset:5px}@media(max-width:360px){.vsl-play{width:64px;height:64px}}
+
+/* Fundos das seções e contraste dos textos. */
+.situations-panel{background:#fff;color:var(--ink);box-shadow:none}
+.situations-list li{border-color:var(--line)}
+.learning{background:var(--pale);color:var(--ink)}
+.learning p:not(.eyebrow){color:var(--muted)}
+.learning .learning-topics,.learning .check-list li{border-color:var(--line)}
+.learning .check-list svg{color:#37744b}
+.learning .topics-toggle{color:#37744b;border-color:#37744b}
+.learning .topics-toggle:hover{background:#102c3d08}
