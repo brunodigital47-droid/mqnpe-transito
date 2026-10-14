@@ -146,3 +146,26 @@ h1,h2{text-wrap:balance}.button{max-width:100%;text-align:center}.button:active{
   .button[href="#oferta"]:hover,.button.checkout-link:hover,.button[href="#oferta"]:focus-visible,.button.checkout-link:focus-visible{animation:none}
 }
 .button[href="#oferta"],.button.checkout-link{touch-action:manipulation}
+
+/* Destaque dos preços anteriores. */
+.top-offer-prices del,.price .old-price{color:#c62828}
+
+.price-card .price{text-align:center}
+
+/* Oferta integrada ao fundo azul-escuro. */
+.offer-section .price-card{background:transparent;color:#fff;border:0;box-shadow:none}
+.offer-section .price-card .old-price{color:#ff8585}
+
+/* Livro com folhas virando em sequência e capa frontal estática. */
+.offer-book-stage{width:min(280px,100%);margin:0 auto 38px;padding:12px 20px 20px}
+.offer-book{position:relative;width:100%;aspect-ratio:3/4;perspective:1000px;isolation:isolate}
+.offer-book-pages{position:absolute;inset:5px -7px -5px 5px;background:#d9e3e6;border-radius:4px;transform:rotate(3deg)}
+.offer-book-pages:after{content:"";position:absolute;inset:5px -5px -5px 5px;background:#b4c4cb;border-radius:4px;transform:rotate(3deg)}
+.offer-book-cover{position:absolute;inset:0;border-radius:3px 6px 6px 3px;background:linear-gradient(90deg,#dce5e6,#fff 6%,#f9fbfb 10%,#fff);box-shadow:0 12px 24px #0003;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px 10px;transform:none}
+.offer-book-cover img{display:block;width:100%;height:auto;max-width:none;object-fit:contain;filter:none;transform:none;margin:0 0 28px}
+.offer-book-lines{width:85%;display:grid;gap:10px}
+.offer-book-lines i{height:4px;border-radius:2px;background:#dfe7e8}.offer-book-lines i:nth-child(2n){width:82%}.offer-book-lines i:nth-child(4){background:#96b7a2}.offer-book-lines i:last-child{width:60%}
+.offer-book-leaf{position:absolute;inset:0;background:linear-gradient(90deg,#dbe2e5,#f8fafb 18%,#fff);border-radius:3px 6px 6px 3px;transform-origin:left center;backface-visibility:hidden;transform-style:preserve-3d;box-shadow:0 5px 12px #0002}
+.offer-book-leaf:before{content:"";position:absolute;inset:26px 20px auto;height:36px;background:repeating-linear-gradient(to bottom,#dce5e7 0 4px,transparent 4px 12px)}
+@keyframes offer-page-flip{0%,15%{transform:rotateY(0deg)}50%,65%{transform:rotateY(-155deg)}90%,100%{transform:rotateY(0deg)}}
+@media(prefers-reduced-motion:no-preference){.offer-book-leaf{animation:offer-page-flip 3s ease-in-out infinite}.leaf-one{animation-delay:.5s}.leaf-two{animation-delay:1s}.leaf-three{animation-delay:1.5s}}
